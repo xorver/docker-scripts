@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for CID in `docker ps | tail -n +2 | awk '{print $1}'`; do
+    echo "${CID} `docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${CID}` `docker inspect --format '{{ .Name }}' ${CID}`"
+done
+

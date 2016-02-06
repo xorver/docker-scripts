@@ -1,0 +1,3 @@
+sudo nohup docker -d &
+sleep 1
+rm -rf nohup.out

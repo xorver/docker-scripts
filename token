@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it `hashdocker node1.gr1` sh -c 'escript get_token.escript gr@`hostname -f` user1'
