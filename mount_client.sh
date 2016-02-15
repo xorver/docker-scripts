@@ -3,9 +3,15 @@
 set -v -e
 
 # input
-USERNAME=user1
-WORKER_DOMAIN=worker1.p1
-CLIENT_DOMAIN=client_host_1
+if [ $1 = "2" ] ; then
+	USERNAME=user1
+	WORKER_DOMAIN=worker1.p2
+	CLIENT_DOMAIN=client_host_2
+else
+        USERNAME=user1
+        WORKER_DOMAIN=worker1.p1
+        CLIENT_DOMAIN=client_host_1
+fi
 
 WORKER_HASH=`hashdocker ${WORKER_DOMAIN}`
 WORKER_IP=`ipdocker ${WORKER_HASH}`
@@ -20,6 +26,8 @@ docker exec -it -u ${USERNAME} ${CLIENT_HASH} \
         rm -rf /home/${USERNAME}/onedata
 docker exec -it -u ${USERNAME} ${CLIENT_HASH} \
 	mkdir /home/${USERNAME}/onedata
+docker exec -it -u ${USERNAME} ${CLIENT_HASH} \
+	mkdir -p /home/${USERNAME}/.local/share/oneclient/
 docker exec -it -u ${USERNAME} ${CLIENT_HASH} bash -c \
 	"echo ${TOKEN} > /home/${USERNAME}/.local/share/oneclient/token"
 #docker exec -it -u ${USERNAME} ${CLIENT_HASH} bash -c \
