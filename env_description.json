@@ -33,8 +33,7 @@
         },
         "cfg2": {
             "storages": [
-                "/mnt/st1",
-                "/mnt/st2"
+                "/mnt/st1"
             ],
             "users": [
                 "user1"
@@ -167,25 +166,6 @@
                         "provider": "p1",
                         "supported_size": 1000000000
                     },
-                    {
-                        "provider": "p2",
-                        "supported_size": 1000000000
-                    }
-                ]
-            },
-            "space2": {
-                "displayed_name": "space2",
-                "storage": "/mnt/st1",
-                "users": [
-                    "user1"
-                ],
-                "groups": [
-                ],
-                "providers": [
-                  {
-                      "provider": "p1",
-                      "supported_size": 1000000000
-                  },
                     {
                         "provider": "p2",
                         "supported_size": 1000000000

@@ -2,5 +2,6 @@
 
 cd ~/op-worker
 ./erl_compile.sh $1
-docker exec -it `hashdocker worker1.p1` find /root/bin/ -name router.beam -exec cp /root/build/ebin/router.beam {} ';'
-docker exec -it `hashdocker worker1.p2` find /root/bin/ -name router.beam -exec cp /root/build/ebin/router.beam {} ';'
+docker exec -it `hashdocker worker1.p1` find /root/bin/ -name $1.beam -exec cp /root/build/ebin/$1.beam {} ';'
+docker exec -it `hashdocker worker1.p2` find /root/bin/ -name $1.beam -exec cp /root/build/ebin/$1.beam {} ';'
+echo "Mod = $1, code:soft_purge(Mod), code:load_file(Mod)."
