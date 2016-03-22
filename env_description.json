@@ -22,9 +22,32 @@
         }
     },
     "os_configs": {
-        "cfg1": {
+        "cfg0": {
             "storages": [
                 "/mnt/st1"
+            ],
+            "users": [
+                "u1",
+                "u2"
+            ],
+            "groups": {
+                "s1": [
+                    "u1",
+                    "u2"
+                ],
+                "s2": [
+                    "u1",
+                    "u2"
+                ],
+                "fuse": [
+                    "u1",
+                    "u2"
+                ]
+            }
+        },
+        "cfg1": {
+            "storages": [
+                "/mnt/st2"
             ],
             "users": [
                 "u1",
@@ -70,7 +93,7 @@
     "provider_domains": {
         "p1": {
             "db_driver": "couchdb",
-            "os_config": "cfg1",
+            "os_config": "cfg0",
             "cluster_manager": {
                 "cm1": {
                     "vm.args": {
@@ -99,7 +122,7 @@
                             "db_nodes": [
                                 "dbnode1"
                             ],
-                            "zone_domain": "oz1",
+                            "oz_domain": "oz1",
                             "verify_oz_cert": false
                         }
                     },
@@ -143,7 +166,7 @@
                             "db_nodes": [
                                 "dbnode1"
                             ],
-                            "zone_domain": "oz1",
+                            "oz_domain": "oz1",
                             "verify_oz_cert": false
                         }
                     },
@@ -266,7 +289,6 @@
         "spaces": {
             "s1": {
                 "displayed_name": "s1",
-                "storage": "/mnt/st1",
                 "users": [
                     "u1",
                     "u2"
@@ -274,21 +296,20 @@
                 "groups": [
                     "g1"
                 ],
-                "providers": [
-                    {
-                        "provider": "p1",
+                "providers": {
+                    "p1": {
+                        "storage": "/mnt/st1",
                         "supported_size": 1000000000
                     },
-                    {
-                        "provider": "p2",
+                    "p2": {
+                        "storage": "/mnt/st2",
                         "supported_size": 1000000000
                     }
+                }
 
-                ]
             },
             "s2": {
                 "displayed_name": "s2",
-                "storage": "/mnt/st1",
                 "users": [
                     "u1",
                     "u2"
@@ -296,16 +317,16 @@
                 "groups": [
                     "g1"
                 ],
-                "providers": [
-                    {
-                        "provider": "p1",
+                "providers": {
+                    "p1": {
+                        "storage": "/mnt/st1",
                         "supported_size": 1000000000
                     },
-                    {
-                        "provider": "p2",
+                    "p2": {
+                        "storage": "/mnt/st2",
                         "supported_size": 1000000000
                     }
-                ]
+                }
             }
         }
     }
