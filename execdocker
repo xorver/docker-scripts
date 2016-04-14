@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it `hashdocker $1` ${@:2}
