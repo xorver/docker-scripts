@@ -2,9 +2,9 @@
 
 set -e
 
-cd ~/op-worker
+cd ~/one_projects/op-worker
 ./erl_compile.sh $1
-cp ~/op-worker/ebin/$1.beam ~/onedata/op_worker/$1.beam
+cp ~/one_projects/op-worker/ebin/$1.beam ~/one_projects/onedata/op_worker/$1.beam
 docker exec -it `hashdocker worker1.p1` find /root/bin/ -name $1.beam -exec cp /root/build/$1.beam {} ';'
 docker exec -it `hashdocker worker1.p2` find /root/bin/ -name $1.beam -exec cp /root/build/$1.beam {} ';'
 echo "code:soft_purge($1), code:load_file($1)."
